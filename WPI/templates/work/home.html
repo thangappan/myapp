@@ -1,0 +1,34 @@
+{% extends 'work/base.html' %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+	<font align="center">{{ user }} - Welcome To Performance Indicator </font>
+	{% if not is_super %}
+		<p> Your supervisor is {{ supervisor }} </p>
+		{% include 'work/task.html' %}
+	{% else %}
+		<table>
+		{% if associates %}
+			
+			{% for associate in associates %}
+				
+				<tr> 
+				<td> {{ associate.employee_id }} </td> <td> {{ associate.user.first_name }} </td> 
+				{% if associate.user_status == 'OFF' %}
+					<td> {{ associate.get_user_status_display}} </td>
+				{% elif associate.user_status == 'AVL' %}
+					<td><a href="{% url 'work:assign_task' associate.employee_id %}">{{ associate.get_user_status_display}}</a></td>
+				{% elif associate.user_status == 'BLK' %}
+					<td><a href="{% url 'work:show_task' associate.employee_id %}">{{ associate.get_user_status_display}}</a></td>
+				{% endif %}
+				</tr>
+				
+			{% endfor %}
+			
+		{% else %}
+		
+			<tr> <td> <p> You don't have any associates assigned yet.</p> </td> </tr>
+			
+		{% endif %}
+		</table>
+	{% endif  %}
+{% endblock %}

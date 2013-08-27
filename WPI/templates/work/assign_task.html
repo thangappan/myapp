@@ -1,0 +1,9 @@
+{% extends 'work/base.html' %}
+{% block title %} Assign Task {% endblock %}
+{% block content %}
+	<h3> Assign Task </h3>
+	<form action="{% url 'work:assign_task' user_id %}" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="assign"/>
+	</form>
+{% endblock %}

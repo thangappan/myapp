@@ -1,0 +1,19 @@
+
+<html xml:lang="en" lang="en">
+<head>
+	<title>Log in</title>
+</head>
+<body>
+	{% if state %}
+		<p> {{ state }}</p>
+	{% endif %}
+	<form action="/work/" method="post">{% csrf_token %}
+		<table align="center">
+		<tr> <th> WPI - Login</th> </tr>
+		<tr> <td> Username:</td> <td> <input type="text" name="username" value="{{ username}}"/> </td> </tr>
+		<tr> <td> Password:</td> <td> <input type="password" name="password" value="" /></td></tr>
+		<tr> <td><input type="submit" value="Log In" /><td></tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% if tasks %}
+		
+		<table>
+		<tr><th>Task Id</th><th> Summary</th> <th>Description </th><th> Created At </th> <th> Created By </th></tr>
+		{% for task in tasks %}
+			<tr>
+			<td> {{ task.task_id }} </td> <td>{{task.summary}}</td> <td> {{ task.description}}</td>
+			<td>{{ task.created_at }}</td> <td> {{ task.created_by }} </td>
+			</tr>
+		{% endfor %}
+		</table>
+		
+	{% else %}
+		<p> No tasks assigned to you </p>
+	{% endif %} 

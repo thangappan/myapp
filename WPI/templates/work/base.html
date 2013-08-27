@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+	<title> {% block title %} Work Performance Indicator {% endblock %} </title>
+</head>
+<body>
+	<h2> Work Performance Indicator </h2>
+	
+	<div id="sidebar">
+		{% block sidebar %}
+			<ul>
+				<li> <a href="{% url 'work:home' %}">Home</a> </li>
+				<li> <a href="{% url 'work:logout' %}">Logout</a></li>
+			</ul>
+		{% endblock %}
+	</div>
+	<div id="content">
+		{% block content %}
+		
+		{% endblock %}
+	</div>
+</body>
+<html>
